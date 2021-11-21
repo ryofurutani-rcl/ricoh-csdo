@@ -1,4 +1,4 @@
 # WindowsPSModulePathモジュールのインストール
-InstallーModule WindowsPSModulePath ーForce _Scope CurrentUser
+Install-Module WindowsPSModulePath -Force -Scope CurrentUser
 # WIndowsPSModulePathのモジュールパスをPowerShell7系のモジュールパスに追加
-AddーWindowsPSModulePath
+Add-WindowsPSModulePath
