@@ -16,21 +16,19 @@ $azureAdAllUsers = Get-AzureADUser -All $true
 $members = @()
 ​
 foreach($member in $azureAdAllUsers){
-    # AzureADの全ユーザーからチームのメンバーを抽出する。
-    $currentUser = $azureAdAllUsers
     # 必要な情報を入れておくためのオブジェクトを作っておく。
     $obj = New-Object PSObject
     # ユーザーの名前を取得。
-    $obj | Add-Member -MemberType NoteProperty -Name DisplayName -Value $currentUser.DisplayName
+    $obj | Add-Member -MemberType NoteProperty -Name DisplayName -Value $member.DisplayName
     # ユーザーのメールアドレスを取得。
-    $obj | Add-Member -MemberType NoteProperty -Name Mail -Value $currentUser.UserPrincipalName
+    $obj | Add-Member -MemberType NoteProperty -Name Mail -Value $member.UserPrincipalName
     # ユーザーの部署を取得。
-    $obj | Add-Member -MemberType NoteProperty -Name Department -Value $currentUser.Department
+    $obj | Add-Member -MemberType NoteProperty -Name Department -Value $member.Department
     # ユーザーの役職(担当とか室長とか)を取得。
-    $obj | Add-Member -MemberType NoteProperty -Name JobTitle -Value $currentUser.JobTitle
+    $obj | Add-Member -MemberType NoteProperty -Name JobTitle -Value $member.JobTitle
     # 作っておいたハッシュに取得した情報を入れる。
     $members += $obj
 }
 ​
 # csvに書き出す。
-$members | Export-Csv -Path .\TeamMember.csv -Encoding UTF8 -NoTypeInformation
+$members | Export-Csv -Path .\rg_employees.csv -Encoding UTF8 -NoTypeInformation
