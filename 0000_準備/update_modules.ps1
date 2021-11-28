@@ -2,5 +2,5 @@
 Update-Module -Name Microsoft.Graph
 
 # AzureADとTeamsモジュールのアップデート。
-Update-Module AzureAD
-Update-Module MicrosoftTeams
+Update-Module -Name AzureAD
+Update-Module -Name MicrosoftTeams
